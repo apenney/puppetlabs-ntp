@@ -23,22 +23,9 @@ class ntp (
 ) inherits ntp::params {
 
   validate_absolute_path($config)
-  validate_string($config_template)
   validate_absolute_path($driftfile)
-  validate_bool($keys_enable)
   validate_re($keys_controlkey, ['^\d+$', ''])
   validate_re($keys_requestkey, ['^\d+$', ''])
-  validate_array($keys_trusted)
-  validate_string($package_ensure)
-  validate_array($package_name)
-  #validate_bool($panic)
-  validate_array($preferred_servers)
-  validate_array($restrict)
-  validate_array($servers)
-  validate_bool($service_enable)
-  validate_string($service_ensure)
-  validate_bool($service_manage)
-  validate_string($service_name)
 
   if $autoupdate {
     notice('autoupdate parameter has been deprecated and replaced with package_ensure.  Set this to latest for the same behavior as autoupdate => true.')
