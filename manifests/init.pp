@@ -1,23 +1,25 @@
+#
 class ntp (
-  $autoupdate        = $ntp::params::autoupdate,
-  $config            = $ntp::params::config,
-  $config_template   = $ntp::params::config_template,
-  $driftfile         = $ntp::params::driftfile,
-  $keys_enable       = $ntp::params::keys_enable,
-  $keys_file         = $ntp::params::keys_file,
-  $keys_controlkey   = $ntp::params::keys_controlkey,
-  $keys_requestkey   = $ntp::params::keys_requestkey,
-  $keys_trusted      = $ntp::params::keys_trusted,
-  $package_ensure    = $ntp::params::package_ensure,
-  $package_name      = $ntp::params::package_name,
-  $panic             = $ntp::params::panic,
-  $preferred_servers = $ntp::params::preferred_servers,
-  $restrict          = $ntp::params::restrict,
-  $servers           = $ntp::params::servers,
-  $service_enable    = $ntp::params::service_enable,
-  $service_ensure    = $ntp::params::service_ensure,
-  $service_manage    = $ntp::params::service_manage,
-  $service_name      = $ntp::params::service_name,
+  $autoupdate        = lookup('ntp::autoupdate', 'Boolean'),
+  $config            = lookup('ntp::config', 'String'),
+  $config_template   = lookup('ntp::config_template', 'String'),
+  $driftfile         = lookup('ntp::driftfile', 'String'),
+  $keys_enable       = lookup('ntp::keys_enable', 'Boolean'),
+  $keys_file         = lookup('ntp::keys_file', 'String'),
+  $keys_controlkey   = lookup('ntp::control_key', 'String'),
+  $keys_requestkey   = lookup('ntp::keys_requestkey', 'String'),
+  $keys_trusted      = lookup('ntp::keys_trusted', 'Array'),
+  $package_ensure    = lookup('ntp::package_ensure', 'String'),
+  $package_name      = lookup('ntp::package_name', 'Array'),
+  $panic             = lookup('ntp::panic', 'Boolean', $ntp::params::panic),
+  $preferred_servers = lookup('ntp::preferred_servers', 'Array'),
+  $restrict          = lookup('ntp::restrict', 'Array'),
+  $servers           = lookup('ntp::servers', 'Array'),
+  $service_enable    = lookup('ntp::service_enable', 'Boolean'),
+  $service_ensure    = lookup('ntp::service_ensure', 'String'),
+  $service_manage    = lookup('ntp::service_manage', 'Boolean'),
+  $service_name      = lookup('ntp::service_name', 'String'),
+  $supported         = lookup('ntp::supported', 'Boolean'),
 ) inherits ntp::params {
 
   validate_absolute_path($config)
@@ -29,7 +31,7 @@ class ntp (
   validate_array($keys_trusted)
   validate_string($package_ensure)
   validate_array($package_name)
-  validate_bool($panic)
+  #validate_bool($panic)
   validate_array($preferred_servers)
   validate_array($restrict)
   validate_array($servers)
@@ -40,6 +42,10 @@ class ntp (
 
   if $autoupdate {
     notice('autoupdate parameter has been deprecated and replaced with package_ensure.  Set this to latest for the same behavior as autoupdate => true.')
+  }
+
+  if ! $supported {
+    fail("The ${module_name} module is not supported by the combination of osfamily: ${::osfamily} and operatingsystem: ${::operatingsystem}")
   }
 
   include '::ntp::install'

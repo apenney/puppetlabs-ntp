@@ -1,0 +1,18 @@
+---
+ntp::supported: false
+ntp::autoupdate: false
+ntp::config_template: 'ntp/ntp.conf.erb'
+ntp::keys_enable: false
+ntp::keys_controlkey: ''
+ntp::keys_requestkey: ''
+ntp::keys_trusted: []
+ntp::package_ensure: 'present'
+ntp::preferred_servers: []
+ntp::restrict:
+  - 'restrict default kod nomodify notrap nopeer noquery'
+  - 'restrict -6 default kod nomodify notrap nopeer noquery'
+  - 'restrict 127.0.0.1'
+  - 'restrict -6 ::1'
+ntp::service_enable: true
+ntp::service_ensure: 'running'
+ntp::service_manage: true

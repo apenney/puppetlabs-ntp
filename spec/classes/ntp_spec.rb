@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe 'ntp' do
+  before(:each) do
+    Puppet[:parser] = 'future'
+  end
 
   ['Debian', 'RedHat','SuSE', 'FreeBSD', 'Archlinux', 'Gentoo'].each do |system|
     if system == 'Gentoo'

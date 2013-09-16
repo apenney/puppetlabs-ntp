@@ -22,5 +22,12 @@ RSpec.configure do |c|
     # Install modules and dependencies
     puppet_module_install(:source => proj_root, :module_name => 'ntp')
     shell('puppet module install puppetlabs-stdlib')
+
+
+
+    # Enable the future parser.
+    shell('echo -e "[main]\nparser = future" >> /etc/puppet/puppet.conf')
+    # Rig up a testing hiera.yaml
+    shell('rm /etc/puppet/hiera.yaml ; ln -s /etc/puppet/modules/ntp/hiera.yaml /etc/puppet/hiera.yaml')
   end
 end

@@ -1,0 +1,13 @@
+---
+ntp::supported: true
+ntp::config: '/etc/ntp.conf'
+ntp::keys_file: '/etc/ntp/keys'
+ntp::driftfile: '/var/lib/ntp/drift'
+ntp::package_name:
+  - 'ntp'
+ntp::service_name: 'ntp'
+ntp::servers:
+  - '0.debian.pool.ntp.org iburst'
+  - '1.debian.pool.ntp.org iburst'
+  - '2.debian.pool.ntp.org iburst'
+  - '3.debian.pool.ntp.org iburst'
