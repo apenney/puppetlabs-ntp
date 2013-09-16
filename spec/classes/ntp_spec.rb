@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe 'ntp' do
+  let(:hiera_config) do
+    { :hierarchy => [
+        ['osfamily', '$osfamily', 'data/osfamily/$osfamily'],
+        ['operatingsystem', '$operatingsystem', 'data/operatingsystem/$operatingsystem'],
+        ['environment', '$environment', 'data/env/$environment'],
+        ['common', 'true', 'data/common'],
+        '%{fqdn}/%{calling_module}',
+        '%{calling_module}'], }
+  end
   before(:each) do
     Puppet[:parser] = 'future'
   end

@@ -8,6 +8,7 @@ group :development, :test do
   gem 'serverspec',              :require => false
   gem 'rspec-system-serverspec', :require => false
   gem 'vagrant-wrapper',         :require => false
+  gem 'rspec-hiera-puppet',      :require => false
 end
 
 if puppetversion = ENV['PUPPET_GEM_VERSION']
