@@ -1,8 +1,8 @@
 ---
-version: 2
+version: 3
 hierarchy:
-  [['osfamily', '$osfamily', 'data/osfamily/$osfamily'],
-   ['operatingsystem', '$operatingsystem', 'data/operatingsystem/$operatingsystem'],
-   ['environment', '$environment', 'data/env/$environment'],
-   ['common', 'true', 'data/common']
-  ]
+  - category: 'osfamily'
+  - category: 'operatingsystem'
+  - category: 'environment'
+  - category: 'common'
+
