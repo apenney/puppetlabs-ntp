@@ -7,7 +7,7 @@ ntp::package_name:
   - 'net/ntp'
 ntp::service_name: 'ntp'
 ntp::servers:
-  - '0.freebsd.pool.ntp.org iburst maxpoll 9',
-  - '1.freebsd.pool.ntp.org iburst maxpoll 9',
-  - '2.freebsd.pool.ntp.org iburst maxpoll 9',
-  - '3.freebsd.pool.ntp.org iburst maxpoll 9',
+  - '0.freebsd.pool.ntp.org iburst maxpoll 9'
+  - '1.freebsd.pool.ntp.org iburst maxpoll 9'
+  - '2.freebsd.pool.ntp.org iburst maxpoll 9'
+  - '3.freebsd.pool.ntp.org iburst maxpoll 9'

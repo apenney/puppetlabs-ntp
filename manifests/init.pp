@@ -1,26 +1,5 @@
 #
-class ntp (
-  $autoupdate        = lookup('ntp::autoupdate', 'Boolean'),
-  $config            = lookup('ntp::config', 'String'),
-  $config_template   = lookup('ntp::config_template', 'String'),
-  $driftfile         = lookup('ntp::driftfile', 'String'),
-  $keys_enable       = lookup('ntp::keys_enable', 'Boolean'),
-  $keys_file         = lookup('ntp::keys_file', 'String'),
-  $keys_controlkey   = lookup('ntp::control_key', 'String'),
-  $keys_requestkey   = lookup('ntp::keys_requestkey', 'String'),
-  $keys_trusted      = lookup('ntp::keys_trusted', 'Array'),
-  $package_ensure    = lookup('ntp::package_ensure', 'String'),
-  $package_name      = lookup('ntp::package_name', 'Array'),
-  $panic             = lookup('ntp::panic', 'Boolean', $ntp::params::panic),
-  $preferred_servers = lookup('ntp::preferred_servers', 'Array'),
-  $restrict          = lookup('ntp::restrict', 'Array'),
-  $servers           = lookup('ntp::servers', 'Array'),
-  $service_enable    = lookup('ntp::service_enable', 'Boolean'),
-  $service_ensure    = lookup('ntp::service_ensure', 'String'),
-  $service_manage    = lookup('ntp::service_manage', 'Boolean'),
-  $service_name      = lookup('ntp::service_name', 'String'),
-  $supported         = lookup('ntp::supported', 'Boolean'),
-) inherits ntp::params {
+class ntp inherits ntp::params {
 
   validate_absolute_path($config)
   validate_absolute_path($driftfile)
