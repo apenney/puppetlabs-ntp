@@ -4,5 +4,5 @@ hierarchy:
   - category: 'osfamily'
   - category: 'operatingsystem'
   - category: 'environment'
+  - category: 'is_virtual'
   - category: 'common'
-

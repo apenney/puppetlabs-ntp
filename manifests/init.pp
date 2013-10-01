@@ -11,7 +11,7 @@ class ntp (
   $keys_trusted      = lookup('ntp::defaults::keys_trusted', 'Array'),
   $package_ensure    = lookup('ntp::defaults::package_ensure', 'String'),
   $package_name      = lookup('ntp::defaults::package_name', 'Array'),
-  $panic             = lookup('ntp::defaults::panic', 'Boolean', $ntp::params::panic),
+  $panic             = lookup('ntp::defaults::panic', 'Boolean'),
   $preferred_servers = lookup('ntp::defaults::preferred_servers', 'Array'),
   $restrict          = lookup('ntp::defaults::restrict', 'Array'),
   $servers           = lookup('ntp::defaults::servers', 'Array'),
