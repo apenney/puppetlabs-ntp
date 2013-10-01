@@ -1,18 +1,18 @@
 ---
-ntp::supported: false
-ntp::autoupdate: false
-ntp::config_template: 'ntp/ntp.conf.erb'
-ntp::keys_enable: false
-ntp::keys_controlkey: ''
-ntp::keys_requestkey: ''
-ntp::keys_trusted: []
-ntp::package_ensure: 'present'
-ntp::preferred_servers: []
-ntp::restrict:
+ntp::defaults::supported: false
+ntp::defaults::autoupdate: false
+ntp::defaults::config_template: 'ntp/ntp.conf.erb'
+ntp::defaults::keys_enable: false
+ntp::defaults::control_key: ''
+ntp::defaults::keys_requestkey: ''
+ntp::defaults::keys_trusted: []
+ntp::defaults::package_ensure: 'present'
+ntp::defaults::preferred_servers: []
+ntp::defaults::restrict:
   - 'restrict default kod nomodify notrap nopeer noquery'
   - 'restrict -6 default kod nomodify notrap nopeer noquery'
   - 'restrict 127.0.0.1'
   - 'restrict -6 ::1'
-ntp::service_enable: true
-ntp::service_ensure: 'running'
-ntp::service_manage: true
+ntp::defaults::service_enable: true
+ntp::defaults::service_ensure: 'running'
+ntp::defaults::service_manage: true

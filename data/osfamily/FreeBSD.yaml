@@ -1,12 +1,12 @@
 ---
-ntp::supported: true
-ntp::config: '/etc/ntp.conf'
-ntp::keys_file: '/etc/ntp/keys'
-ntp::driftfile: '/var/db/ntpd.drift'
-ntp::package_name:
+ntp::defaults::supported: true
+ntp::defaults::config: '/etc/ntp.conf'
+ntp::defaults::keys_file: '/etc/ntp/keys'
+ntp::defaults::driftfile: '/var/db/ntpd.drift'
+ntp::defaults::package_name:
   - 'net/ntp'
-ntp::service_name: 'ntp'
-ntp::servers:
+ntp::defaults::service_name: 'ntp'
+ntp::defaults::servers:
   - '0.freebsd.pool.ntp.org iburst maxpoll 9'
   - '1.freebsd.pool.ntp.org iburst maxpoll 9'
   - '2.freebsd.pool.ntp.org iburst maxpoll 9'
